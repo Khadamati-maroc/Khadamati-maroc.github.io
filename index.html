@@ -1,0 +1,455 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>خدماتي</title>
+<meta name="description" content="خدماتي — لقا السباك، الكهربائي، الناقل والمعلم ديالك فمدينتك وعيط ليه مباشرة. منصة مغربية مجانية.">
+<meta name="theme-color" content="#0F6E56">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%230F6E56'/%3E%3Cpath d='M24 56 L44 76 L80 30' fill='none' stroke='%23fff' stroke-width='12' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='24' cy='56' r='9' fill='%23E86A2B' stroke='%230F6E56' stroke-width='3'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=Inter:wght@400;500;600;800&display=swap">
+<style>
+:root{
+  --bg:#F4F7F5; --card:#FFFFFF; --fg:#15201B; --muted:#5B6B64; --line:#DDE5E1;
+  --green:#0F6E56; --green-soft:#E3F1EC; --orange:#E86A2B; --orange-soft:#FDECE3;
+  --danger:#B42318; --shadow:0 8px 24px rgba(21,32,27,.08);
+  --r:16px; --font-ar:"IBM Plex Sans Arabic",system-ui,sans-serif; --font-la:Inter,system-ui,sans-serif;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0F1613; --card:#182420; --fg:#EEF3F0; --muted:#9FB0A8; --line:#2A3A33;
+  --green:#3DA88B; --green-soft:#153A30; --orange:#F08A52; --orange-soft:#3D2416; --danger:#F27C6B;
+  --shadow:0 8px 24px rgba(0,0,0,.4); color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0F1613; --card:#182420; --fg:#EEF3F0; --muted:#9FB0A8; --line:#2A3A33;
+  --green:#3DA88B; --green-soft:#153A30; --orange:#F08A52; --orange-soft:#3D2416; --danger:#F27C6B;
+  --shadow:0 8px 24px rgba(0,0,0,.4); color-scheme:dark}
+*{box-sizing:border-box}
+html{padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font-ar);font-size:16px;line-height:1.55;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 96px}
+[dir="ltr"] body, body.latin{font-family:var(--font-la)}
+[hidden]{display:none!important}
+a{color:var(--green)}
+button{font:inherit;cursor:pointer;border:0;background:none;color:inherit}
+input,select,textarea{font:inherit;color:var(--fg);background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;width:100%}
+input:focus,select:focus,textarea:focus{outline:2px solid var(--green);outline-offset:1px;border-color:transparent}
+textarea{min-height:110px;resize:vertical}
+.wrap{max-width:960px;margin:0 auto}
+header{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-block:14px}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--fg)}
+.brand svg{width:40px;height:40px;flex:none}
+.brand b{font-size:24px;font-weight:700;color:var(--green);letter-spacing:-.01em}
+.brand small{display:block;font-size:11px;color:var(--muted);font-family:var(--font-la);font-weight:600;letter-spacing:.08em;text-transform:uppercase;line-height:1}
+.tools{display:flex;gap:8px;align-items:center}
+.pill{border:1px solid var(--line);background:var(--card);border-radius:999px;padding:8px 14px;font-weight:600;font-size:14px}
+.pill.on{background:var(--green);color:#fff;border-color:var(--green)}
+.btn{text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:12px;padding:12px 18px;font-weight:600;background:var(--green);color:#fff;min-height:46px}
+.btn.orange{background:var(--orange)}
+.btn.ghost{background:var(--card);color:var(--fg);border:1px solid var(--line)}
+.btn.danger{background:transparent;color:var(--danger);border:1px solid var(--line)}
+.btn.block{width:100%}
+.btn:disabled{opacity:.55;cursor:default}
+.hero{padding-block:18px 10px}
+.hero h1{font-size:clamp(26px,5vw,40px);margin:0 0 6px;line-height:1.2;text-wrap:balance}
+.hero p{margin:0;color:var(--muted);font-size:17px;max-width:60ch}
+.search{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;box-shadow:var(--shadow);display:grid;gap:10px;margin-top:16px}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.row>*{flex:1 1 180px;min-width:0}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.chips::-webkit-scrollbar{display:none}
+.chip{flex:none;border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-size:14px;font-weight:500;background:var(--card);white-space:nowrap}
+.chip.on{background:var(--green-soft);border-color:var(--green);color:var(--green);font-weight:600}
+.count{color:var(--muted);font-size:14px;margin:18px 0 10px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px;display:flex;flex-direction:column;gap:10px;text-align:start}
+.card:active{transform:scale(.995)}
+.who{display:flex;gap:12px;align-items:center}
+.avatar{width:48px;height:48px;border-radius:14px;background:var(--green);color:#fff;display:grid;place-items:center;font-weight:700;font-size:18px;flex:none}
+.avatar.o{background:var(--orange)}
+.name{font-weight:700;font-size:17px;line-height:1.2}
+.meta{color:var(--muted);font-size:14px}
+.tag{display:inline-block;background:var(--green-soft);color:var(--green);border-radius:8px;padding:3px 9px;font-size:13px;font-weight:600}
+.desc{color:var(--fg);font-size:15px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card .btn{margin-top:auto;min-height:42px;padding:10px 14px}
+.empty{text-align:center;color:var(--muted);padding:40px 16px;background:var(--card);border:1px dashed var(--line);border-radius:var(--r)}
+.fab{position:fixed;bottom:calc(16px + env(safe-area-inset-bottom,0px));inset-inline-end:max(16px,env(safe-area-inset-right,0px));z-index:5;box-shadow:var(--shadow);border-radius:999px;padding:14px 20px}
+.sheet-bg{position:fixed;inset:0;background:rgba(21,32,27,.45);z-index:9;display:flex;align-items:flex-end;justify-content:center}
+@media(min-width:720px){.sheet-bg{align-items:center}}
+.sheet{background:var(--card);width:100%;max-width:560px;max-height:92vh;overflow:auto;border-radius:22px 22px 0 0;padding:18px 18px calc(22px + env(safe-area-inset-bottom,0px));display:grid;gap:14px}
+@media(min-width:720px){.sheet{border-radius:22px}}
+.sheet h2{margin:0;font-size:22px}
+.handle{width:44px;height:5px;border-radius:5px;background:var(--line);margin:0 auto -6px}
+.close{position:absolute;inset-inline-end:16px;top:16px;color:#fff;font-size:28px;line-height:1}
+.phone{font-family:var(--font-la);font-size:30px;font-weight:800;letter-spacing:.02em;direction:ltr;text-align:center;background:var(--green-soft);color:var(--green);border-radius:14px;padding:14px}
+.field{display:grid;gap:6px}
+.field label{font-size:14px;font-weight:600;color:var(--muted)}
+.check{display:flex;align-items:center;gap:10px;font-weight:500}
+.check input{width:22px;height:22px;accent-color:var(--green)}
+.msg{background:var(--orange-soft);color:var(--fg);border-radius:12px;padding:12px 14px;font-size:15px}
+.msg.ok{background:var(--green-soft)}
+.msg.err{background:var(--orange-soft);color:var(--danger)}
+.toast{position:fixed;bottom:calc(84px + env(safe-area-inset-bottom,0px));left:50%;transform:translateX(-50%);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:14px;z-index:20;box-shadow:var(--shadow)}
+footer{margin-top:40px;padding-block:24px;border-top:1px solid var(--line);color:var(--muted);font-size:14px;display:grid;gap:8px}
+footer a{color:var(--muted)}
+.legal{display:grid;gap:12px;max-width:68ch}
+.legal h2{margin:18px 0 0;font-size:20px}
+.legal h3{margin:8px 0 0;font-size:16px}
+.demo{background:var(--orange-soft);border:1px dashed var(--orange);border-radius:12px;padding:10px 14px;font-size:14px;margin-top:12px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<script>
+/* ============================================================
+   خدماتي — configuration
+   Paste the two values from Supabase → Project Settings → API.
+   Leave them empty and the site runs in DEMO mode with sample data.
+   ============================================================ */
+const SUPABASE_URL = "https://crajsmfbyolzevutyqbg.supabase.co/rest/v1/";
+const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImNyYWpzbWZieW9semV2dXR5cWJnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTQyNDE1NzMsImV4cCI6MjEwOTgxNzU3M30.mm6gbt9oynzyUMD6v0zbUoaFio-mS4LSRJAsr5vWtB8";
+const CONTACT_EMAIL ="elfatihimajdouline7@gmail.com";   // shown in Terms; change to yours
+</script>
+
+<div class="wrap">
+<header>
+  <a class="brand" href="#" id="brandLink">
+    <svg viewBox="0 0 100 100" aria-hidden="true"><rect width="100" height="100" rx="24" fill="#0F6E56"/><path d="M24 56 L44 76 L80 30" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/><circle cx="24" cy="56" r="9" fill="#E86A2B" stroke="#0F6E56" stroke-width="3"/></svg>
+    <span><b>خدماتي</b><small>khadamati</small></span>
+  </a>
+  <div class="tools">
+    <button class="pill" id="langBtn" aria-label="Changer de langue">FR</button>
+    <button class="pill" id="accBtn"></button>
+  </div>
+</header>
+<main id="app" aria-live="polite"></main>
+<footer id="foot"></footer>
+</div>
+<button class="btn orange fab" id="fab"></button>
+<div id="sheetRoot"></div>
+<div id="toastRoot"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.js"></script>
+<script>
+/* ---------- i18n ---------- */
+const S = {
+ar:{
+ dir:"rtl", other:"FR",
+ h1:"لقا المعلم ديالك، وعيط ليه مباشرة.",
+ sub:"سباك، كهربائي، صباغ، ناقل، معقب… مقدمو الخدمات فمدينتك برقم الهاتف ديالهم. بلا وسيط، بلا عمولة.",
+ city:"المدينة", allCities:"كل المدن", allCats:"كل الخدمات", q:"قلب بالاسم أو الكلمة…",
+ results:n=>`${n} مقدم خدمة`, none:"ما لقينا حتى واحد فهاذ الاختيار. جرب مدينة أخرى أو خدمة أخرى.",
+ show:"عرض الرقم", call:"عيّط", wa:"واتساب", copy:"نسخ", copied:"تنسخ الرقم",
+ signinToSee:"دخل بحسابك باش تشوف الرقم. مجاني وكياخد 20 ثانية.",
+ report:"بلّغ على هاذ الإعلان", reportWhy:"علاش كتبلّغ؟", reportSent:"شكراً، غادي نراجعو الإعلان.",
+ reasons:["رقم خاطئ","سلوك غير لائق","نصب أو احتيال","إعلان مكرر","سبب آخر"],
+ member:"عضو منذ", fab:"أنا مقدم خدمة", account:"حسابي", login:"دخول",
+ authTitle:"دخول / حساب جديد", email:"البريد الإلكتروني", pw:"كلمة السر (8 حروف على الأقل)",
+ signin:"دخول", signup:"إنشاء حساب", toggleUp:"ما عندكش حساب؟ أنشئ واحد", toggleIn:"عندك حساب؟ دخل",
+ signout:"خروج", welcome:"مرحباً",
+ myListing:"الإعلان ديالي", newListing:"أنشئ الإعلان ديالك", name:"الاسم أو اسم المحل", cat:"الخدمة",
+ phone:"رقم الهاتف (06 / 07 / 05)", hasWa:"عندي واتساب على هاذ الرقم", desc:"وصف قصير: شنو كتدير، فين كتخدم، أوقات العمل",
+ active:"الإعلان ظاهر للناس", save:"حفظ", saved:"تحفظ الإعلان", del:"حذف الإعلان", delAcc:"حذف الحساب نهائياً",
+ delAccSure:"غادي يتحذف الحساب والإعلان نهائياً. متأكد؟", yes:"نعم، احذف", noBack:"لا، رجع",
+ badPhone:"الرقم خاصو يكون مغربي: 10 أرقام كيبدا بـ 05 أو 06 أو 07", need:"عمّر الاسم والخدمة والمدينة والرقم",
+ terms:"الشروط والخصوصية", legal1:"خدماتي منصة للتعريف فقط. الاتفاق على الخدمة والثمن كيكون بين الزبون ومقدم الخدمة مباشرة.",
+ demo:"وضع تجريبي: المعطيات هنا للعرض فقط. من بعد ما تربط Supabase غادي تولي حقيقية.",
+ revealLimit:"وصلتي للحد اليومي ديال الأرقام. عاود غدا.", err:"وقع مشكل، عاود المحاولة.",
+ dash:"لوحة مقدم الخدمة", ltr:false,
+},
+fr:{
+ dir:"ltr", other:"ع",
+ h1:"Trouvez votre artisan et appelez-le directement.",
+ sub:"Plombier, électricien, peintre, transporteur, coursier… les prestataires de votre ville avec leur numéro. Sans intermédiaire, sans commission.",
+ city:"Ville", allCities:"Toutes les villes", allCats:"Tous les services", q:"Chercher un nom, un mot…",
+ results:n=>`${n} prestataire${n>1?"s":""}`, none:"Aucun prestataire pour ce choix. Essayez une autre ville ou un autre service.",
+ show:"Voir le numéro", call:"Appeler", wa:"WhatsApp", copy:"Copier", copied:"Numéro copié",
+ signinToSee:"Connectez-vous pour voir le numéro. Gratuit, 20 secondes.",
+ report:"Signaler cette annonce", reportWhy:"Pourquoi signalez-vous ?", reportSent:"Merci, nous vérifions l’annonce.",
+ reasons:["Numéro erroné","Comportement inapproprié","Arnaque","Annonce en double","Autre"],
+ member:"Membre depuis", fab:"Je suis prestataire", account:"Mon compte", login:"Connexion",
+ authTitle:"Connexion / Inscription", email:"E-mail", pw:"Mot de passe (8 caractères min.)",
+ signin:"Se connecter", signup:"Créer un compte", toggleUp:"Pas de compte ? Créez-en un", toggleIn:"Déjà un compte ? Connectez-vous",
+ signout:"Déconnexion", welcome:"Bonjour",
+ myListing:"Mon annonce", newListing:"Créer mon annonce", name:"Nom ou nom du commerce", cat:"Service",
+ phone:"Téléphone (06 / 07 / 05)", hasWa:"J’ai WhatsApp sur ce numéro", desc:"Courte description : ce que vous faites, où, vos horaires",
+ active:"Annonce visible", save:"Enregistrer", saved:"Annonce enregistrée", del:"Supprimer l’annonce", delAcc:"Supprimer mon compte",
+ delAccSure:"Le compte et l’annonce seront supprimés définitivement. Confirmer ?", yes:"Oui, supprimer", noBack:"Non, retour",
+ badPhone:"Numéro marocain attendu : 10 chiffres commençant par 05, 06 ou 07", need:"Remplissez le nom, le service, la ville et le numéro",
+ terms:"Conditions et confidentialité", legal1:"Khadamati est une plateforme de mise en relation. L’accord sur la prestation et le prix se fait directement entre le client et le prestataire.",
+ demo:"Mode démo : données d’exemple. Une fois Supabase connecté, elles deviennent réelles.",
+ revealLimit:"Limite quotidienne de numéros atteinte. Réessayez demain.", err:"Un problème est survenu, réessayez.",
+ dash:"Espace prestataire", ltr:true,
+}};
+const CATS = [
+ ["plumber","سباك","Plombier"],["electrician","كهربائي","Électricien"],["painter","صباغ","Peintre"],
+ ["cleaning","تنظيف","Ménage"],["transport","نقل وترحال","Transport & déménagement"],["errands","قضاء الأغراض","Courses & coursier"],
+ ["paperwork","معقب (وثائق إدارية)","Démarches administratives"],["ac","تبريد وتكييف","Froid & climatisation"],["mechanic","ميكانيكي","Mécanicien"],
+ ["carpenter","نجار","Menuisier"],["mason","بنّاء","Maçon"],["welder","حداد","Soudeur"],["gardener","بستاني","Jardinier"],
+ ["tutor","دروس خصوصية","Cours particuliers"],["care","رعاية الأطفال والمسنين","Garde d’enfants & aide aux aînés"],["beauty","حلاقة وتجميل فالدار","Coiffure & beauté à domicile"],
+ ["tailor","خياطة","Couture"],["it","إصلاح الهواتف والحواسيب","Réparation téléphone & PC"],["photo","تصوير","Photographie"],["other","خدمات أخرى","Autres services"]];
+const CITIES = [
+ ["casablanca","الدار البيضاء","Casablanca"],["rabat","الرباط","Rabat"],["sale","سلا","Salé"],["temara","تمارة","Témara"],["marrakech","مراكش","Marrakech"],
+ ["fes","فاس","Fès"],["tangier","طنجة","Tanger"],["tetouan","تطوان","Tétouan"],["agadir","أكادير","Agadir"],["meknes","مكناس","Meknès"],
+ ["oujda","وجدة","Oujda"],["kenitra","القنيطرة","Kénitra"],["eljadida","الجديدة","El Jadida"],["safi","آسفي","Safi"],["mohammedia","المحمدية","Mohammedia"],
+ ["beni-mellal","بني ملال","Béni Mellal"],["nador","الناظور","Nador"],["khouribga","خريبكة","Khouribga"],["settat","سطات","Settat"],["laayoune","العيون","Laâyoune"],["other","مدينة أخرى","Autre ville"]];
+
+let lang = "ar"; try{ lang = localStorage.getItem("kh_lang") || "ar"; }catch(e){}
+const t = k => S[lang][k];
+const catName  = id => { const c = CATS.find(x=>x[0]===id);  return c ? (lang==="ar"?c[1]:c[2]) : id; };
+const cityName = id => { const c = CITIES.find(x=>x[0]===id); return c ? (lang==="ar"?c[1]:c[2]) : id; };
+const esc = s => String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
+const initials = n => (n||"?").trim().split(/\s+/).slice(0,2).map(w=>w[0]).join("").toUpperCase();
+const fmtPhone = p => p ? p.replace(/^\+212/,"0").replace(/(\d{2})(\d{2})(\d{2})(\d{2})(\d{2})/,"$1 $2 $3 $4 $5") : "";
+const normPhone = p => { const d = String(p||"").replace(/\D/g,""); if(/^0[567]\d{8}$/.test(d)) return "+212"+d.slice(1); if(/^212[567]\d{8}$/.test(d)) return "+"+d; return null; };
+const waLink = p => "https://wa.me/"+p.replace(/\D/g,"");
+const since = d => { try{ return new Date(d).toLocaleDateString(lang==="ar"?"ar-MA":"fr-MA",{month:"long",year:"numeric"}); }catch(e){ return ""; } };
+
+/* ---------- data layer ---------- */
+const DEMO = !SUPABASE_URL;
+const sb = DEMO ? null : supabase.createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+const demoDB = {
+ user:null,
+ listings:[
+  {id:"d1",owner:"u1",name:"المعلم رشيد",category:"plumber",city:"casablanca",phone:"+212661234567",whatsapp:true,description:"سباكة، تسريبات، سخانات الماء. كنخدم فسيدي مومن، عين السبع والبرنوصي. من 8 صباحاً حتى 9 ليلاً.",active:true,created_at:"2026-09-02"},
+  {id:"d2",owner:"u2",name:"Électricité Hamza",category:"electrician",city:"casablanca",phone:"+212662345678",whatsapp:true,description:"Installation, tableaux, pannes, interphones. Casablanca et Mohammedia. Devis gratuit par WhatsApp.",active:true,created_at:"2026-08-14"},
+  {id:"d3",owner:"u3",name:"نقل سعيد — بيكوب",category:"transport",city:"rabat",phone:"+212663456789",whatsapp:true,description:"بيكوب 1.5 طن للترحال والنقل بين الرباط، سلا وتمارة. كاين العمّال إلى بغيتي.",active:true,created_at:"2026-10-01"},
+  {id:"d4",owner:"u4",name:"المعقب يوسف",category:"paperwork",city:"rabat",phone:"+212664567890",whatsapp:false,description:"الوثائق الإدارية: البطاقة الوطنية، الجواز، الكارط كريز، التسجيل بالضرائب. معرفة بالمصالح ديال الرباط.",active:true,created_at:"2026-07-20"},
+  {id:"d5",owner:"u5",name:"Fatima Ménage",category:"cleaning",city:"marrakech",phone:"+212665678901",whatsapp:true,description:"Ménage à domicile et fin de bail, Guéliz et Hivernage. Produits fournis. Disponible 6j/7.",active:true,created_at:"2026-09-28"},
+  {id:"d6",owner:"u6",name:"صباغة عادل",category:"painter",city:"tangier",phone:"+212666789012",whatsapp:true,description:"صباغة الشقق والفيلات، ديكور الجبس، ثمن بالمتر. كنعطي الثمن من بعد المعاينة.",active:true,created_at:"2026-10-19"},
+  {id:"d7",owner:"u7",name:"Coursier Mehdi",category:"errands",city:"casablanca",phone:"+212667890123",whatsapp:true,description:"Courses, livraisons, dépôt de dossiers, pharmacie. Moto, toute la ville, en 1 h.",active:true,created_at:"2026-10-25"},
+  {id:"d8",owner:"u8",name:"تكييف كريم",category:"ac",city:"agadir",phone:"+212668901234",whatsapp:true,description:"تركيب وإصلاح المكيفات والثلاجات، شحن الغاز. أكادير وإنزكان.",active:true,created_at:"2026-06-11"},
+ ],
+ reveals:0, reports:[]
+};
+const api = DEMO ? {
+ async session(){ return demoDB.user; },
+ async signIn(email){ demoDB.user={id:"me",email}; return demoDB.user; },
+ async signUp(email){ demoDB.user={id:"me",email}; return demoDB.user; },
+ async signOut(){ demoDB.user=null; },
+ async list(f){ return demoDB.listings.filter(l=>l.active && (!f.city||l.city===f.city) && (!f.cat||l.category===f.cat) && (!f.q||(l.name+l.description).toLowerCase().includes(f.q.toLowerCase()))).map(({phone,...r})=>r); },
+ async reveal(id){ const l=demoDB.listings.find(x=>x.id===id); return {phone:l.phone, whatsapp:l.whatsapp}; },
+ async mine(){ return demoDB.listings.find(l=>l.owner==="me")||null; },
+ async save(d){ const i=demoDB.listings.findIndex(l=>l.owner==="me"); const row={...d,id:i>=0?demoDB.listings[i].id:"d"+Date.now(),owner:"me",created_at:i>=0?demoDB.listings[i].created_at:new Date().toISOString()}; if(i>=0) demoDB.listings[i]=row; else demoDB.listings.unshift(row); return row; },
+ async remove(){ demoDB.listings=demoDB.listings.filter(l=>l.owner!=="me"); },
+ async report(id,reason){ demoDB.reports.push({id,reason}); },
+ async deleteAccount(){ demoDB.listings=demoDB.listings.filter(l=>l.owner!=="me"); demoDB.user=null; },
+ onAuth(cb){},
+} : {
+ async session(){ const {data}=await sb.auth.getSession(); return data.session?.user||null; },
+ async signIn(email,password){ const {data,error}=await sb.auth.signInWithPassword({email,password}); if(error) throw error; return data.user; },
+ async signUp(email,password){ const {data,error}=await sb.auth.signUp({email,password}); if(error) throw error; return data.user; },
+ async signOut(){ await sb.auth.signOut(); },
+ async list(f){ let q=sb.from("listings_public").select("*").order("created_at",{ascending:false}).limit(80);
+   if(f.city) q=q.eq("city",f.city); if(f.cat) q=q.eq("category",f.cat);
+   if(f.q){ const s=f.q.replace(/[%,()]/g," ").trim(); if(s) q=q.or(`name.ilike.%${s}%,description.ilike.%${s}%`); }
+   const {data,error}=await q; if(error) throw error; return data; },
+ async reveal(id){ const {data,error}=await sb.rpc("reveal_phone",{p_listing:id}); if(error) throw error; return data; },
+ async mine(){ const u=await this.session(); if(!u) return null; const {data,error}=await sb.from("listings").select("*").eq("owner",u.id).maybeSingle(); if(error) throw error; return data; },
+ async save(d){ const u=await this.session(); const row={...d,owner:u.id}; const {data,error}=await sb.from("listings").upsert(row,{onConflict:"owner"}).select().single(); if(error) throw error; return data; },
+ async remove(){ const u=await this.session(); const {error}=await sb.from("listings").delete().eq("owner",u.id); if(error) throw error; },
+ async report(id,reason){ const {error}=await sb.from("reports").insert({listing_id:id,reason}); if(error) throw error; },
+ async deleteAccount(){ const {error}=await sb.rpc("delete_my_account"); if(error) throw error; await sb.auth.signOut(); },
+ onAuth(cb){ sb.auth.onAuthStateChange(()=>cb()); },
+};
+
+/* ---------- state & rendering ---------- */
+const state = { view:"home", user:null, filters:{city:"",cat:"",q:""}, rows:[], loading:false };
+const $ = id => document.getElementById(id);
+let toastT; function toast(msg){ $("toastRoot").innerHTML=`<div class="toast">${esc(msg)}</div>`; clearTimeout(toastT); toastT=setTimeout(()=>$("toastRoot").innerHTML="",2200); }
+
+function applyLang(){
+  document.documentElement.lang = lang; document.documentElement.dir = S[lang].dir;
+  document.body.classList.toggle("latin", lang!=="ar");
+  $("langBtn").textContent = t("other");
+  $("fab").textContent = t("fab");
+  $("accBtn").textContent = state.user ? t("account") : t("login");
+  $("foot").innerHTML = `<div>${esc(t("legal1"))}</div><div><a href="#terms" id="termsLink">${esc(t("terms"))}</a> · <span dir="ltr">© 2026 خدماتي</span></div>`;
+  $("termsLink").onclick = e=>{ e.preventDefault(); state.view="terms"; render(); window.scrollTo(0,0); };
+}
+
+function render(){
+  applyLang();
+  if(state.view==="terms") return renderTerms();
+  if(state.view==="dash") return renderDash();
+  renderHome();
+}
+
+function renderHome(){
+  const f = state.filters;
+  $("app").innerHTML = `
+  <section class="hero">
+    <h1>${esc(t("h1"))}</h1>
+    <p>${esc(t("sub"))}</p>
+    ${DEMO?`<div class="demo">${esc(t("demo"))}</div>`:""}
+    <div class="search">
+      <div class="row">
+        <select id="city" aria-label="${esc(t("city"))}"><option value="">${esc(t("allCities"))}</option>${CITIES.map(c=>`<option value="${c[0]}" ${f.city===c[0]?"selected":""}>${esc(lang==="ar"?c[1]:c[2])}</option>`).join("")}</select>
+        <input id="q" type="search" placeholder="${esc(t("q"))}" value="${esc(f.q)}">
+      </div>
+      <div class="chips" id="chips">
+        <button class="chip ${!f.cat?"on":""}" data-cat="">${esc(t("allCats"))}</button>
+        ${CATS.map(c=>`<button class="chip ${f.cat===c[0]?"on":""}" data-cat="${c[0]}">${esc(lang==="ar"?c[1]:c[2])}</button>`).join("")}
+      </div>
+    </div>
+  </section>
+  <div class="count" id="count"></div>
+  <section class="grid" id="grid"></section>`;
+  $("city").onchange = e=>{ f.city=e.target.value; load(); };
+  let qt; $("q").oninput = e=>{ f.q=e.target.value; clearTimeout(qt); qt=setTimeout(load,250); };
+  $("chips").onclick = e=>{ const b=e.target.closest("[data-cat]"); if(!b) return; f.cat=b.dataset.cat; renderHome(); load(); };
+  load();
+}
+
+async function load(){
+  state.loading=true; $("count").textContent="…";
+  try{ state.rows = await api.list(state.filters); }catch(e){ console.error(e); state.rows=[]; toast(t("err")); }
+  state.loading=false;
+  if(!$("grid")) return;
+  $("count").textContent = t("results")(state.rows.length);
+  $("grid").innerHTML = state.rows.length ? state.rows.map((l,i)=>`
+    <article class="card" data-id="${esc(l.id)}">
+      <div class="who"><div class="avatar ${i%3===1?"o":""}">${esc(initials(l.name))}</div>
+        <div style="min-width:0"><div class="name">${esc(l.name)}</div><div class="meta">${esc(cityName(l.city))} · ${esc(t("member"))} ${esc(since(l.created_at))}</div></div></div>
+      <div><span class="tag">${esc(catName(l.category))}</span></div>
+      <p class="desc" style="margin:0">${esc(l.description)}</p>
+      <button class="btn">${esc(t("show"))}</button>
+    </article>`).join("") : `<div class="empty">${esc(t("none"))}</div>`;
+  $("grid").onclick = e=>{ const c=e.target.closest(".card"); if(c) openListing(state.rows.find(r=>String(r.id)===c.dataset.id)); };
+}
+
+/* ---------- sheets ---------- */
+function sheet(html){ $("sheetRoot").innerHTML = `<div class="sheet-bg" id="sbg"><button class="close" aria-label="close" id="sclose">×</button><div class="sheet" role="dialog" aria-modal="true"><div class="handle"></div>${html}</div></div>`;
+  $("sbg").onclick = e=>{ if(e.target.id==="sbg") closeSheet(); }; $("sclose").onclick=closeSheet; document.body.style.overflow="hidden"; }
+function closeSheet(){ $("sheetRoot").innerHTML=""; document.body.style.overflow=""; }
+
+function openListing(l){
+  if(!l) return;
+  sheet(`
+    <div class="who"><div class="avatar">${esc(initials(l.name))}</div>
+      <div style="min-width:0"><h2>${esc(l.name)}</h2><div class="meta">${esc(catName(l.category))} · ${esc(cityName(l.city))}</div></div></div>
+    <p style="margin:0;white-space:pre-wrap">${esc(l.description)}</p>
+    <div class="meta">${esc(t("member"))} ${esc(since(l.created_at))}</div>
+    <div id="revealBox"><button class="btn block" id="revealBtn">${esc(t("show"))}</button></div>
+    <button class="btn danger" id="reportBtn" style="min-height:40px">${esc(t("report"))}</button>`);
+  $("reportBtn").onclick = ()=>openReport(l);
+  $("revealBtn").onclick = async ()=>{
+    if(!state.user){ $("revealBox").innerHTML=`<div class="msg">${esc(t("signinToSee"))}</div><button class="btn block" id="goAuth">${esc(t("signin"))} / ${esc(t("signup"))}</button>`; $("goAuth").onclick=()=>openAuth(()=>openListing(l)); return; }
+    $("revealBtn").disabled=true;
+    try{
+      const r = await api.reveal(l.id); const p = r.phone;
+      $("revealBox").innerHTML = `
+        <div class="phone" id="phoneTxt">${esc(fmtPhone(p))}</div>
+        <div class="row">
+          <a class="btn" href="tel:${esc(p)}">${esc(t("call"))}</a>
+          ${r.whatsapp?`<a class="btn" style="background:#25D366" href="${esc(waLink(p))}" target="_blank" rel="noopener">${esc(t("wa"))}</a>`:""}
+          <button class="btn ghost" id="copyBtn">${esc(t("copy"))}</button>
+        </div>`;
+      $("copyBtn").onclick = async ()=>{ try{ await navigator.clipboard.writeText(fmtPhone(p)); toast(t("copied")); }catch(e){ const r=document.createRange(); r.selectNodeContents($("phoneTxt")); const s=getSelection(); s.removeAllRanges(); s.addRange(r); } };
+    }catch(e){ console.error(e); $("revealBox").innerHTML=`<div class="msg err">${esc(/limit/i.test(e.message||"")?t("revealLimit"):t("err"))}</div>`; }
+  };
+}
+
+function openReport(l){
+  sheet(`<h2>${esc(t("report"))}</h2><div class="meta">${esc(l.name)}</div>
+    <div class="field"><label>${esc(t("reportWhy"))}</label><select id="reason">${t("reasons").map(r=>`<option>${esc(r)}</option>`).join("")}</select></div>
+    <button class="btn block" id="sendReport">${esc(t("report"))}</button>`);
+  $("sendReport").onclick = async ()=>{ try{ await api.report(l.id,$("reason").value); closeSheet(); toast(t("reportSent")); }catch(e){ toast(t("err")); } };
+}
+
+function openAuth(after){
+  let mode="in";
+  const draw=()=>{ sheet(`<h2>${esc(t("authTitle"))}</h2>
+    <div class="field"><label>${esc(t("email"))}</label><input id="em" type="email" autocomplete="email" inputmode="email" dir="ltr"></div>
+    <div class="field"><label>${esc(t("pw"))}</label><input id="pw" type="password" autocomplete="${mode==="in"?"current-password":"new-password"}" dir="ltr"></div>
+    <div id="authMsg"></div>
+    <button class="btn block" id="go">${esc(mode==="in"?t("signin"):t("signup"))}</button>
+    <button class="btn ghost block" id="tog">${esc(mode==="in"?t("toggleUp"):t("toggleIn"))}</button>`);
+    $("tog").onclick=()=>{ mode=mode==="in"?"up":"in"; draw(); };
+    $("go").onclick=async ()=>{ const em=$("em").value.trim(), pw=$("pw").value; if(!em||pw.length<8){ $("authMsg").innerHTML=`<div class="msg err">${esc(t("pw"))}</div>`; return; }
+      $("go").disabled=true;
+      try{ state.user = mode==="in" ? await api.signIn(em,pw) : await api.signUp(em,pw); closeSheet(); applyLang(); if(after) after(); else { state.view="dash"; render(); } }
+      catch(e){ $("go").disabled=false; $("authMsg").innerHTML=`<div class="msg err">${esc(e.message||t("err"))}</div>`; } };
+  };
+  draw();
+}
+
+/* ---------- provider dashboard ---------- */
+async function renderDash(){
+  if(!state.user){ state.view="home"; render(); openAuth(()=>{ state.view="dash"; render(); }); return; }
+  $("app").innerHTML = `<section class="hero"><h1>${esc(t("dash"))}</h1><p>${esc(t("welcome"))} <span dir="ltr">${esc(state.user.email||"")}</span></p></section><div id="dash">…</div>`;
+  let mine=null; try{ mine = await api.mine(); }catch(e){ console.error(e); }
+  const m = mine || {name:"",category:"",city:"",phone:"",whatsapp:true,description:"",active:true};
+  $("dash").innerHTML = `
+  <div class="search" style="margin-top:0">
+    <h2 style="margin:0;font-size:20px">${esc(mine?t("myListing"):t("newListing"))}</h2>
+    <div class="field"><label>${esc(t("name"))}</label><input id="f_name" value="${esc(m.name)}" maxlength="60"></div>
+    <div class="row">
+      <div class="field"><label>${esc(t("cat"))}</label><select id="f_cat"><option value=""></option>${CATS.map(c=>`<option value="${c[0]}" ${m.category===c[0]?"selected":""}>${esc(lang==="ar"?c[1]:c[2])}</option>`).join("")}</select></div>
+      <div class="field"><label>${esc(t("city"))}</label><select id="f_city"><option value=""></option>${CITIES.map(c=>`<option value="${c[0]}" ${m.city===c[0]?"selected":""}>${esc(lang==="ar"?c[1]:c[2])}</option>`).join("")}</select></div>
+    </div>
+    <div class="field"><label>${esc(t("phone"))}</label><input id="f_phone" type="tel" inputmode="tel" dir="ltr" value="${esc(fmtPhone(m.phone))}" placeholder="06 12 34 56 78"></div>
+    <label class="check"><input type="checkbox" id="f_wa" ${m.whatsapp?"checked":""}> ${esc(t("hasWa"))}</label>
+    <div class="field"><label>${esc(t("desc"))}</label><textarea id="f_desc" maxlength="500">${esc(m.description)}</textarea></div>
+    <label class="check"><input type="checkbox" id="f_active" ${m.active?"checked":""}> ${esc(t("active"))}</label>
+    <div id="dashMsg"></div>
+    <button class="btn block" id="saveBtn">${esc(t("save"))}</button>
+    ${mine?`<button class="btn danger block" id="delBtn">${esc(t("del"))}</button>`:""}
+  </div>
+  <div class="row" style="margin-top:16px">
+    <button class="btn ghost" id="outBtn">${esc(t("signout"))}</button>
+    <button class="btn danger" id="delAccBtn">${esc(t("delAcc"))}</button>
+  </div>`;
+  $("saveBtn").onclick = async ()=>{
+    const phone = normPhone($("f_phone").value);
+    const d = {name:$("f_name").value.trim(), category:$("f_cat").value, city:$("f_city").value, phone, whatsapp:$("f_wa").checked, description:$("f_desc").value.trim(), active:$("f_active").checked};
+    if(!d.name||!d.category||!d.city||!$("f_phone").value.trim()){ $("dashMsg").innerHTML=`<div class="msg err">${esc(t("need"))}</div>`; return; }
+    if(!phone){ $("dashMsg").innerHTML=`<div class="msg err">${esc(t("badPhone"))}</div>`; return; }
+    $("saveBtn").disabled=true;
+    try{ await api.save(d); toast(t("saved")); renderDash(); }catch(e){ console.error(e); $("saveBtn").disabled=false; $("dashMsg").innerHTML=`<div class="msg err">${esc(e.message||t("err"))}</div>`; }
+  };
+  if($("delBtn")) $("delBtn").onclick = async ()=>{ try{ await api.remove(); renderDash(); }catch(e){ toast(t("err")); } };
+  $("outBtn").onclick = async ()=>{ await api.signOut(); state.user=null; state.view="home"; render(); };
+  $("delAccBtn").onclick = ()=>{ sheet(`<h2>${esc(t("delAcc"))}</h2><p style="margin:0">${esc(t("delAccSure"))}</p>
+      <button class="btn danger block" id="yes">${esc(t("yes"))}</button><button class="btn ghost block" id="no">${esc(t("noBack"))}</button>`);
+    $("no").onclick=closeSheet; $("yes").onclick=async ()=>{ try{ await api.deleteAccount(); state.user=null; closeSheet(); state.view="home"; render(); }catch(e){ toast(t("err")); } }; };
+}
+
+/* ---------- terms ---------- */
+function renderTerms(){
+  const ar = `
+  <h2>الشروط العامة</h2>
+  <p>خدماتي منصة إلكترونية للتعريف بمقدمي الخدمات فالمغرب. كتعرض إعلانات كيكتبوها مقدمو الخدمات بأنفسهم، وكتمكّن الزبون من الاتصال بهم مباشرة.</p>
+  <p>خدماتي ما هي طرف فأي اتفاق بين الزبون ومقدم الخدمة. الاتفاق على الخدمة، الثمن، الموعد والجودة كيكون بين الطرفين وعلى مسؤوليتهم. المنصة ما كتضمنش هوية أو كفاءة أو ترخيص مقدمي الخدمات، وما كتاخد حتى عمولة.</p>
+  <p>مقدم الخدمة كيتحمل مسؤولية صحة المعلومات ديالو، واحترام القانون المغربي، وأي ترخيص مهني ضروري لنشاطو. أي إعلان فيه نصب، معلومات خاطئة أو سلوك غير لائق كيتحذف.</p>
+  <h2>سياسة الخصوصية (القانون 09-08)</h2>
+  <p>كنجمعو غير الضروري: البريد الإلكتروني للحساب، وبالنسبة لمقدمي الخدمات الاسم، الخدمة، المدينة، رقم الهاتف والوصف اللي كيكتبوه بأنفسهم باش يتعرض للعموم.</p>
+  <p>رقم الهاتف كيتعرض غير للمستعملين المسجلين، رقم بواحد، مع حد يومي، باش ما يتجمعش بشكل آلي. كنسجلو شكون شاف الرقم ووقتاش لحماية مقدمي الخدمات.</p>
+  <p>ما كنبيعوش المعطيات وما كنشاركوهاش مع أي طرف ثالث. المعطيات كتخزن عند مزود استضافة مؤمَّن. تقدر تحذف حسابك والإعلان ديالك نهائياً من "حسابي" فأي وقت، أو تراسلنا على <span dir="ltr">${esc(CONTACT_EMAIL)}</span> لممارسة حقك فالولوج أو التصحيح أو التعرض طبقاً للقانون 09-08.</p>
+  <h2>التبليغ</h2>
+  <p>كل إعلان فيه زر "بلّغ". كنراجعو التبليغات وكنحذفو الإعلانات المخالفة.</p>`;
+  const fr = `
+  <h2>Conditions générales</h2>
+  <p>Khadamati est une plateforme de mise en relation entre particuliers et prestataires de services au Maroc. Elle affiche des annonces rédigées par les prestataires eux-mêmes et permet au client de les contacter directement.</p>
+  <p>Khadamati n’est partie à aucun accord entre client et prestataire. La prestation, le prix, le rendez-vous et la qualité relèvent exclusivement des deux parties. La plateforme ne garantit ni l’identité, ni la compétence, ni les autorisations des prestataires, et ne perçoit aucune commission.</p>
+  <p>Le prestataire est responsable de l’exactitude de ses informations, du respect de la loi marocaine et de toute autorisation professionnelle requise pour son activité. Toute annonce frauduleuse, inexacte ou inappropriée est supprimée.</p>
+  <h2>Confidentialité (loi 09-08)</h2>
+  <p>Nous collectons le strict nécessaire : l’e-mail du compte et, pour les prestataires, le nom, le service, la ville, le numéro de téléphone et la description qu’ils publient volontairement.</p>
+  <p>Le numéro n’est visible que par les utilisateurs connectés, un à la fois, avec une limite quotidienne, pour empêcher toute collecte automatisée. Les consultations de numéros sont journalisées pour protéger les prestataires.</p>
+  <p>Aucune donnée n’est vendue ni partagée avec des tiers. Les données sont hébergées chez un prestataire sécurisé. Vous pouvez supprimer votre compte et votre annonce à tout moment depuis « Mon compte », ou nous écrire à <span dir="ltr">${esc(CONTACT_EMAIL)}</span> pour exercer vos droits d’accès, de rectification et d’opposition (loi 09-08, CNDP).</p>
+  <h2>Signalement</h2>
+  <p>Chaque annonce comporte un bouton « Signaler ». Les signalements sont examinés et les annonces contraires aux règles sont retirées.</p>`;
+  $("app").innerHTML = `<section class="hero"><h1>${esc(t("terms"))}</h1></section><div class="legal">${lang==="ar"?ar:fr}</div>
+   <p style="margin-top:24px"><button class="btn ghost" id="backBtn">← ${esc(lang==="ar"?"الرجوع":"Retour")}</button></p>`;
+  $("backBtn").onclick=()=>{ state.view="home"; render(); };
+}
+
+/* ---------- boot ---------- */
+$("langBtn").onclick = ()=>{ lang = lang==="ar"?"fr":"ar"; try{ localStorage.setItem("kh_lang",lang); }catch(e){} render(); };
+$("brandLink").onclick = e=>{ e.preventDefault(); state.view="home"; render(); };
+$("fab").onclick = ()=>{ state.view="dash"; render(); window.scrollTo(0,0); };
+$("accBtn").onclick = ()=>{ if(state.user){ state.view="dash"; render(); } else openAuth(()=>{ state.view="dash"; render(); }); };
+(async ()=>{ state.user = await api.session(); if(location.hash==="#terms") state.view="terms"; render();
+  api.onAuth(async ()=>{ state.user = await api.session(); applyLang(); }); })();
+</script>
+</body>
+</html>
